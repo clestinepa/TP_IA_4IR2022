@@ -82,6 +82,7 @@ expand(State, [_, _, G], Successors) :-
 
 loop_successors([], _, _, _, _, _).
 loop_successors([Node | NextNodes], Pf1, Pf3, Pu1, Pu3, Q) :-
+	writeln('loop'),
 	treat_one_successor(Node, Pf1, Pf2, Pu1, Pu2, Q),
 	loop_successors(NextNodes, Pf2, Pf3, Pu2, Pu3, Q).
 
@@ -119,7 +120,7 @@ aetoile(Pf, Pu, _ ) :-
 	writeln('PAS DE SOLUTION : L’ÉTAT FINAL N’EST PAS ATTEIGNABLE !'),
 	!.
 
-aetoile(Pf, _, Q) :-
+aetoile(Pf, _, _) :-
 	suppress_min([_, S], Pf, _),
 	heuristique(S, 0),
 	afficher_solution(S),

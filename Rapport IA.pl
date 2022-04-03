@@ -69,7 +69,7 @@ findall([Rule,Suivant], (initial_state(Ini), rule(Rule,_,Ini,Suivant)),DuoRuleSt
 %       3                                                      
 %       4                                                      
 %       5                                                      
-%       6                                                      
+%       6            
 
 % Quelle longueur de séquence peut-on envisager de résoudre pour le Taquin 4x4 ?
 

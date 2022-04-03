@@ -34,7 +34,7 @@ Les autres prédicats sont spécifiques au Taquin.
    
 
 %initial_state([ [b, h, c],       % C'EST L'EXEMPLE PRIS EN COURS
-%                [a, f, d],       %
+%               [a, f, d],       %
 %                [g,vide,e] ]).   % h1=4,   h2=5,   f*=5
 
 
@@ -42,9 +42,9 @@ Les autres prédicats sont spécifiques au Taquin.
 % AUTRES EXEMPLES POUR LES TESTS DE  A*
 
 
-/*initial_state([ [ a, b, c],
+initial_state([ [ a, b, c],
                 [ g, h, d],
-                [vide,f, e] ]). % h2=2, f*=2*/
+                [vide,f, e] ]). % h2=2, f*=2
 
 /*initial_state([ [b, c, d],
                 [a,vide,g],
@@ -58,9 +58,9 @@ Les autres prédicats sont spécifiques au Taquin.
                 [d,vide,h],
                 [c, b, a]  ]). % h2=24, f*=30*/
 
-initial_state([ [a, b, c],
-                [g,vide,d],
-                [h, f, e]]). % etat non connexe avec l'etat final (PAS DE SOLUTION)
+%initial_state([ [a, b, c],
+ %               [g,vide,d],
+  %              [h, f, e]]). % etat non connexe avec l'etat final (PAS DE SOLUTION)
 
 
 
@@ -179,8 +179,8 @@ coordonnees([L,C], Mat, Elt) :-
    %*************
    
 heuristique(U, H) :-
-%    heuristique1(U, H).  % au debut on utilise l'heuristique 1
-   heuristique2(U, H).  % ensuite utilisez plutot l'heuristique 2
+    heuristique1(U, H).  % au debut on utilise l'heuristique 1
+ %  heuristique2(U, H).  % ensuite utilisez plutot l'heuristique 2
    
    
    %****************
@@ -237,27 +237,5 @@ heuristique2(U, H) :-
     findall(D, (manhattan(U, F, Elt, D), Elt \= vide), Distances),
     sum_list(Distances, H)
 .
-% 1.2
 
-% a)
-% final_state([[1,   2,  3,    4],
-%              [5,   6,  7,    8],
-%              [9,  10, 11,   12],
-%              [13, 14, 15, vide]]).
-
-% b)
-% initial_state(Ini), nth1(L,Ini,Ligne), nth1(C,Ligne, d). - Coordonnées de d
-% final_state(Fin), nth1(3,Fin,Ligne), nth1(2,Ligne,P). - Ce qu'il y a en 3;2
-
-% c)
-% initial_state(Fin), nth1(1,Fin,Ligne), nth1(1,Ligne,a).
-
-% d)
-% initial_state(Ini), rule(Dir, 1, Ini, Suite).
-
-% e)
-% initial_state(Ini), findall(Suite, rule(Dir, 1, Ini, Suite), All).
-
-% f)
-% initial_state(Ini), findall([Dir,Suite], rule(Dir, 1, Ini, Suite), All).
 
