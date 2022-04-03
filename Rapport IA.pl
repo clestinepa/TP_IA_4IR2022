@@ -75,7 +75,7 @@ findall([Rule,Suivant], (initial_state(Ini), rule(Rule,_,Ini,Suivant)),DuoRuleSt
 
 % Le taquin 4x4 demande 16 pièce (on comptant le vide) à organiser contre seulement 9 pour le taquin 3x3
 % Il contient donc presque 2 taquins qui sont en plus liés entre eux
-% De plus, le nombre d'états possible est infinement plus grand (400 000 contre 21 000 000 000 000)
+% De plus, le nombre d'états possible est infiniment plus grand (400 000 contre 21 000 000 000 000)
 % On peut donc envisager une longueur de séquence INTERMINAAABLE !
 % Heureusement qu'avec d'autres heuristiques et contraintes (éviter de rompre les suites de pièce correcte, mettre les pièce dans le bon ordre une par une ect), on est capable de résoudre un 4x4, sinon c'est la loose.
 
@@ -92,8 +92,8 @@ initial_state([ [a,b,c],
 % Tout d'abord, il y a 24 "pièces" différentes, 8 coins de 3 couleurs
 %                                               12 arrêtes de 2 couleurs
 %                                               4 centres de 1 couleur
-% On peut modéliser une liste de 6 taquins representant les faces du Rubik's Cube
-% Les coins apparraissent donc dans 3 taquins différents, les arrêtes dans 2 et les centres dans un unique taquin
+% On peut modéliser une liste de 6 taquins représentant les faces du Rubik's Cube
+% Les coins apparaissent donc dans 3 taquins différents, les arrêtes dans 2 et les centres dans un unique taquin
 % La liste simulerait un Rubik's Cube que l'on tient toujours face à nous [Face,Haut,Bas,Gauche,Droite,Arrière] (à n'importe quel moment de l'algorithme Face correspond à Face initial)
 
 % Ainsi, les actions qui s'offrent à nous sont les suivantes :
@@ -171,15 +171,15 @@ heuristique(x, [[x,o,x],[x,o,x],[o,x,o]], H). % H = 0
 % GAIN              4       1       3       1       3       1       2       0       0
 % MEILLEUR COUP   [2,2]   [2,2]   [2,2]   [2,2]   [2,2]   [2,2]   [2,2]   [3,3]   [3,3]
 
-% Si l'on joue bien, on ne peut jamais perdre au tictactoe ! Et ça, notre algo ne s'en rend compte seulement qu'avec une profondeur necessairement grande : à partir de 8 
+% Si l'on joue bien, on ne peut jamais perdre au tictactoe ! Et ça, notre algo ne s'en rend compte seulement qu'avec une profondeur nécessairement grande : à partir de 8 
 % C'est pour cela que le meilleur coup change, l'algo comprend que la situation mènera forcément à une égalité, le coup importe donc peu
 % L'implémentation prend donc le dernier coup [3,3] possible.
 
 % Comment ne pas développer inutilement des situations symétriques de situations déjà développées ?
 
-% Il suffirait de stocker les situations et lors du developpement, les comparer entièrement aux situations déjà connues.
+% Il suffirait de stocker les situations et lors du développement, les comparer entièrement aux situations déjà connues.
 % "Entièrement" car il faut comparer ses miroirs, ses rotations, ... Toutes les situations qui sont similaire en terme de possibilités
-% Néanmoins, nous perdrons surement en optimisation vu la quantité de situations symétriques à vérifer.
+% Néanmoins, nous perdrons surement en optimisation vu la quantité de situations symétriques à vérifier.
 
 % Que faut-il reprendre pour passer au jeu du puissance 4 ?
 
@@ -190,6 +190,3 @@ heuristique(x, [[x,o,x],[x,o,x],[o,x,o]], H). % H = 0
 % Comment améliorer l’algorithme en élaguant certains coups inutiles (recherche Alpha-Beta) ?
 
 % On réduirait les coups inutile : réduire la taille de l'arbre de dérivation et donc sa durée de création.
-
-
-
